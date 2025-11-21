@@ -4,203 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Creación y Acceso - Eventos</title>
-
-    <style>
-        /* reset básico para que no haya márgenes raros y todo mida igual */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* fondo general y tipografía principal de la página */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
-        }
-
-        /* barra de navegación fija arriba */
-        nav {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        /* lista del menú centrada */
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        /* enlaces del menú */
-        nav a {
-            text-decoration: none;
-            color: #667eea;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-
-        /* hover y página activa */
-        nav a:hover,
-        nav a.active {
-            background-color: #667eea;
-            color: white;
-        }
-
-        /* contenedor del contenido principal */
-        main {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 2rem;
-        }
-
-        /* título grande del tema */
-        h1 {
-            text-align: center;
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        /* tarjetas blancas que uso para separar los apartados */
-        .content-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
-            margin-bottom: 2rem;
-        }
-
-        .content-card h2 {
-            color: #667eea;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        /* zona donde van los botones y el input */
-        .controls {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-
-        /* input para pegar la URL de la imagen */
-        input[type="text"] {
-            padding: 10px;
-            border: 2px solid #667eea;
-            border-radius: 8px;
-            min-width: 230px;
-        }
-
-        /* estilo de los botones principales */
-        .demo-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 22px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        /* pequeña animación al pasar el ratón */
-        .demo-button:hover {
-            transform: scale(1.05);
-        }
-
-        /* área donde muestro contenido generado con JS */
-        .demo-area {
-            background: #ffffff;
-            border: 2px dashed #667eea;
-            padding: 12px;
-            margin-top: 10px;
-            border-radius: 10px;
-            min-height: 100px;
-        }
-
-        /* grid para colocar las tarjetas de imágenes */
-        .galeria-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        /* tarjeta individual */
-        .tarjeta {
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
-            padding: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        /* efecto al pasar el ratón por encima */
-        .tarjeta:hover {
-            transform: scale(1.02);
-        }
-
-        /* imagen dentro de la tarjeta */
-        .tarjeta img {
-            width: 100%;
-            height: 130px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        /* texto debajo de la imagen */
-        .caption {
-            margin-top: 8px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #555;
-        }
-
-        /* cuando selecciono una tarjeta la marco con el borde */
-        .seleccionada {
-            outline: 3px solid #764ba2;
-            outline-offset: 3px;
-        }
-
-        /* caja tipo consola para ver mensajes y eventos */
-        #registro {
-            background: #111;
-            color: white;
-            padding: 12px;
-            border-radius: 8px;
-            height: 150px;
-            overflow-y: auto;
-        }
-
-        /* footer */
-        footer {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  
+    <!-- Menú superior -->
     <nav>
         <ul>
             <li><a href="index.html">Inicio</a></li>
@@ -214,39 +23,39 @@
     <main>
         <h1>Creación y Acceso — DOM</h1>
 
-        <!-- parte de la galería -->
+        <!-- Parte de la galería -->
         <section class="content-card">
             <h2>Galería dinámica (DOM)</h2>
             <p>Uso createElement, appendChild, parentNode, childNodes, testNode</p>
 
             <div class="controls">
 
-                <!-- input para pegar URL -->
+                <!-- Input para pegar URL -->
                 <input id="url-input" type="text" placeholder="Pega URL de imagen">
 
-                <!-- botón para añadir URL -->
+                <!-- Botón para añadir URL -->
                 <button id="btn-add-url" class="demo-button">Añadir URL</button>
 
-                <!-- botón de imagen aleatoria -->
+                <!-- Botón de imagen aleatoria -->
                 <button id="btn-random" class="demo-button">Aleatoria</button>
 
-                <!-- subo archivos desde PC -->
+                <!-- Subir archivo desde PC -->
                 <button id="btn-file" class="demo-button">Local</button>
 
-                <!-- vacio la galería -->
+                <!-- Vaciar la galería -->
                 <button id="btn-empty" class="demo-button">Vaciar</button>
 
                 <!-- input file oculto -->
-                <input id="file-input" type="file" accept="image/*" style="display:none">
+                <input id="file-input" type="file" accept="image/*" class="hidden">
             </div>
 
-            <!-- contenedor general -->
+            <!-- Contenedor general -->
             <div class="demo-area">
                 <div id="galeria" class="galeria-grid"></div>
             </div>
         </section>
 
-        <!-- demo de createTextNode -->
+        <!-- Demo de createTextNode -->
         <section class="content-card">
             <h2>Crear título con createTextNode</h2>
 
@@ -255,30 +64,30 @@
             <div id="text-demo" class="demo-area"></div>
         </section>
 
-        <!-- registro -->
+        <!-- Registro -->
         <section class="content-card">
             <h2>Registro / Comprobaciones</h2>
-            <div id="registro"></div>
+            <div id="log"></div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Eventos - Proyecto de Aprendizaje</p>
+        <p>&copy; 2025 Eventos - Proyecto de Aprendizaje</p>
         <p>Todos los derechos reservados</p>
     </footer>
 
 <script>
 
-    /* función para escribir mensajes en el registro de abajo */
+    /* Función para escribir mensajes en el registro de abajo */
     function writeLog(...p) {
-      const log = document.getElementById("registro")
+      const log = document.getElementById("log")
       const line = document.createElement("div")
       line.textContent = p.join(" ")
       log.appendChild(line)
       log.scrollTop = log.scrollHeight
     }
 
-    /* precargo una imagen para comprobar que funciona antes de añadirla */
+    /* Precargo una imagen para comprobar que funciona antes de añadirla */
     function preloadImage(url, timeout = 6000) {
       return new Promise((resolve, reject) => {
 
@@ -299,7 +108,7 @@
       })
     }
 
-    /* función para comprobar datos del nodo clicado (tipo, hijos, padre...) */
+    /* Función para comprobar datos del nodo clicado (tipo, hijos, padre...) */
     function testNode(n) {
       return {
         tipo: n.nodeType,
@@ -309,7 +118,7 @@
       }
     }
 
-    /* creo la tarjeta que contiene la imagen y el texto */
+    /* Creo la tarjeta que contiene la imagen y el texto */
     function crearTarjeta(src, caption) {
 
       const t = document.createElement("div")
@@ -325,7 +134,7 @@
       t.appendChild(img)
       t.appendChild(p)
 
-      /* si la imagen falla le bajo la opacidad y lo aviso en el caption */
+      /* Si la imagen falla le bajo la opacidad y lo aviso en el caption */
       img.addEventListener("error", () => {
         img.style.opacity = "0.3"
         p.textContent = caption + " (no disponible)"
@@ -335,7 +144,7 @@
       return t
     }
 
-    /* inserto una tarjeta en la galería */
+    /* Inserto una tarjeta en la galería */
     function addToGaleria(node, start = false) {
 
       const g = document.getElementById("galeria")
@@ -349,7 +158,7 @@
     const galeria = document.getElementById("galeria")
     const urlInput = document.getElementById("url-input")
 
-    /* preload y botón para añadir imagen desde URL */
+    /* Botón para añadir imagen desde URL */
     document.getElementById("btn-add-url").addEventListener("click", () => {
 
       const url = urlInput.value.trim()
@@ -362,7 +171,7 @@
         ))
     })
 
-    /* botón de imagen aleatoria */
+    /* Botón de imagen aleatoria */
     document.getElementById("btn-random").addEventListener("click", () => {
 
       const src = `https://picsum.photos/seed/${Date.now()}/400/240`
@@ -372,7 +181,7 @@
         .catch(() => writeLog("Error al cargar aleatoria"))
     })
 
-    /* botón para seleccionar archivo */
+    /* Botón para seleccionar archivo */
     document.getElementById("btn-file").addEventListener("click", () => fileInput.click())
 
     const fileInput = document.getElementById("file-input")
@@ -389,13 +198,13 @@
       reader.readAsDataURL(f)
     })
 
-    /* vaciar toda la galería */
+    /* Vaciar toda la galería */
     document.getElementById("btn-empty").addEventListener("click", () => {
 
       while (galeria.firstChild) galeria.removeChild(galeria.firstChild)
     })
 
-    /* seleccionar tarjeta al hacer click */
+    /* Seleccionar tarjeta al hacer click */
     galeria.addEventListener("click", e => {
 
       const card = e.target.closest(".tarjeta")
@@ -405,14 +214,14 @@
       writeLog("testNode:", JSON.stringify(testNode(card)))
     })
 
-    /* borrar tarjeta con doble click */
+    /* Borrar tarjeta con doble click */
     galeria.addEventListener("dblclick", e => {
 
       const card = e.target.closest(".tarjeta")
       if (card) card.parentNode.removeChild(card)
     })
 
-    /* mover tarjeta al inicio usando Alt + click */
+    /* Mover tarjeta al inicio usando Alt + click */
     galeria.addEventListener("mousedown", e => {
 
       if (!e.altKey) return
@@ -421,55 +230,20 @@
       if (card) galeria.insertBefore(card, galeria.firstChild)
     })
 
-//  // cambio de color con createTextNode
-
-// const contenedorTitulos = document.getElementById("text-demo");
-// const btnTitulo = document.getElementById("btn-create-text");
-
-// // rotación de colores para los títulos
-// const colores = ["red", "blue", "green", "orange", "darkred","black", "skyblue"];
-// let indiceColor = 0;
-
-// btnTitulo.addEventListener("click", () => {
-//     // creo el nodo de texto
-//     const mensaje = "Hola Equipo";
-
-//     // creo el h3
-//     const h3 = document.createElement("h3");
-
-//     // creao nodo de texto y lo meto dentro del h3
-//     const nodoTexto = document.createTextNode(mensaje);
-//     h3.appendChild(nodoTexto);
-
-//     // asigno color del array
-//     h3.style.color = colores[indiceColor];
-//     h3.style.textAlign = "center";
-//     h3.style.fontSize = "6rem";
-
-//     // paso al siguiente color
-//     indiceColor = (indiceColor + 1) % colores.length;
-
-//     // inserto el h3 al contenedor
-//     contenedorTitulos.appendChild(h3);
-// });
-
-
-    /* demo de createTextNode */
+    /* Demo de createTextNode */
     document.getElementById("btn-create-text").addEventListener("click", () => {
 
       const t = document.createTextNode("Hola Mundo")
-      const h4 = document.createElement("h4")
-      h4.style.fontSize = "5rem"
-      h4.style.color = "#black"
-      h4.style.textAlign = "center"
-      h4.classList.add("titulo-animado")
+      const h = document.createElement("h3")
+      h.style.fontSize = "3rem"
+      h.style.color = "green"
+      h.style.textAlign = "center"
+      h.appendChild(t)
 
-      h4.appendChild(t)
-
-      document.getElementById("text-demo").appendChild(h4)
+      document.getElementById("text-demo").appendChild(h)
     })
 
-    /* imágenes de ejemplo */
+    /* Empiezo con dos imágenes de ejemplo */
     addToGaleria(crearTarjeta("https://picsum.photos/seed/1763541415344/400/240", "Ejemplo 1"))
     addToGaleria(crearTarjeta("https://picsum.photos/seed/1763541311995/400/240", "Ejemplo 2"))
 
