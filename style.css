@@ -1,0 +1,863 @@
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+nav {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: #667eea;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+    background-color: #667eea;
+    color: white;
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   CONTENT CARDS
+   ============================================ */
+.content-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+}
+
+.content-card h2 {
+    color: #667eea;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.content-card p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.content-card p, label {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+/* ============================================
+   INDEX PAGE SPECIFIC
+   ============================================ */
+.sections-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.section-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.section-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.section-card h2 {
+    color: #667eea;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.section-card p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.demo-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.demo-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.demo-button.danger {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+}
+
+/* ============================================
+   TIPS DE EVENTOS PAGE SPECIFIC
+   ============================================ */
+.tip-item {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-left: 4px solid #667eea;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+}
+
+.tip-item h3 {
+    color: #764ba2;
+    margin-bottom: 0.5rem;
+}
+
+.demo-section {
+    margin-top: 2rem;
+}
+
+.demo-section h2 {
+    color: #667eea;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.demo-section ul {
+    font-family: 'Times New Roman', Times, serif;
+    list-style: disc;
+    margin-left: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.demo-section li {
+    font-size: 22px;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+#miBtn {
+    width: 16rem;
+    height: 3rem;
+    border-radius: 70px;
+    background-color: rgb(143, 198, 88);
+    font-size: larger;
+    margin: 1rem;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+#miBtn:hover {
+    background-color: rgb(80, 147, 13);
+    transform: scale(1.05);
+}
+
+#miBtn1 {
+    width: 16rem;
+    height: 3rem;
+    border-radius: 70px;
+    background-color: blue;
+    font-size: larger;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+#miBtn1:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+#divLista {
+    border: 0.1rem solid black;
+    margin: 3rem;
+    border-radius: 70px;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s;
+}
+
+#divLista ul {
+    list-style: disc;
+    margin-left: 2rem;
+}
+
+#divLista li {
+    font-size: 18px;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+#miFormulario {
+    margin: 2rem 0;
+}
+
+#miFormulario label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+#miFormulario input {
+    width: 20rem;
+    height: 3rem;
+    margin: 1rem 0;
+    border: 0.2rem solid black;
+    border-radius: 5px;
+    padding: 0 1rem;
+    font-size: 1rem;
+}
+
+#miFormulario button {
+    width: 7rem;
+    height: 2rem;
+    font-size: larger;
+    font-weight: bold;
+    background-color: #667eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#miFormulario button:hover {
+    background-color: #764ba2;
+    transform: scale(1.05);
+}
+
+#mensaje {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    color: #333;
+    min-height: 2rem;
+}
+
+/* ============================================
+   INVOCACION LLAMADA PAGE SPECIFIC
+   ============================================ */
+.example-item {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-left: 4px solid #667eea;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+}
+
+.example-item h3 {
+    color: #764ba2;
+    margin-bottom: 0.5rem;
+}
+
+.ejemplo {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.ejemplo h3 {
+    color: #333;
+    margin-top: 0;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.ejemplo p {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.ejemplo button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.ejemplo button:hover {
+    background-color: #218838;
+}
+
+#divPadre {
+    background-color: #e9ecef;
+    padding: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#botonHijo {
+    background-color: #dc3545;
+    margin-top: 10px;
+}
+
+#botonHijo:hover {
+    background-color: #c82333;
+}
+
+#miDivPosicion {
+    width: 300px;
+    height: 100px;
+    border: 2px dashed #007bff;
+    background-color: #e6f7ff;
+    text-align: center;
+    line-height: 100px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #0056b3;
+}
+
+/* ============================================
+   CREACION Y ACCESO PAGE SPECIFIC
+   ============================================ */
+.controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.demo-area {
+    background: #fff;
+    border: 2px dashed #667eea;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    min-height: 100px;
+}
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.tarjeta {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.tarjeta:hover {
+    transform: scale(1.02);
+}
+
+.tarjeta img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.caption {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.seleccionada {
+    outline: 3px solid #764ba2;
+    outline-offset: 3px;
+}
+
+#log {
+    background: #111;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    height: 150px;
+    overflow-y: auto;
+    font-family: monospace;
+}
+
+/* ============================================
+   LOCALSTORAGE PAGE SPECIFIC
+   ============================================ */
+.centrado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lista {
+    margin-left: 2rem;
+}
+
+.boton {
+    background-color: lightblue;
+    border: none;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+.storage-item {
+    background: #e9ecef;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.storage-item strong {
+    color: #667eea;
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+input[type="text"] {
+    padding: 10px;
+    border: 2px solid #667eea;
+    border-radius: 8px;
+    min-width: 230px;
+}
+
+input, textarea {
+    padding: 10px;
+    border: 2px solid #667eea;
+    border-radius: 5px;
+    margin: 0.5rem 0;
+    width: 100%;
+    max-width: 400px;
+    font-family: inherit;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ============================================
+   CODE ELEMENTS
+   ============================================ */
+code {
+    background: #e9ecef;
+    padding: 0.5rem;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    color: #d63384;
+    display: block;
+    margin: 0.5rem 0;
+    white-space: pre-wrap;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablet and smaller screens */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    nav {
+        padding: 0.75rem 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    nav a {
+        display: block;
+        text-align: center;
+        width: 100%;
+        padding: 0.75rem 1rem;
+    }
+
+    .sections-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .content-card {
+        padding: 1.5rem;
+    }
+
+    main {
+        max-width: 100%;
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    .section-card {
+        padding: 1.5rem;
+    }
+
+    .section-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        padding: 10px 24px;
+        font-size: 0.9rem;
+    }
+
+    .demo-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        margin: 0.5rem;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .controls input[type="text"] {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #miFormulario input {
+        width: 100%;
+    }
+
+    #miBtn,
+    #miBtn1 {
+        width: 100%;
+        max-width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    #divLista {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .demo-section li {
+        font-size: 18px;
+    }
+
+    .ejemplo {
+        padding: 15px;
+    }
+
+    #miDivPosicion {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .galeria-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 10px;
+    }
+
+    .centrado {
+        width: 100%;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
+    }
+
+    nav {
+        padding: 0.5rem;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+    }
+
+    main {
+        padding: 0.75rem;
+        margin: 0.5rem auto;
+    }
+
+    .content-card {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .content-card h2 {
+        font-size: 1.4rem;
+    }
+
+    .section-card {
+        padding: 1rem;
+    }
+
+    .section-card h2 {
+        font-size: 1.3rem;
+    }
+
+    .section-card p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+
+    .demo-button {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        margin: 0.5rem 0;
+    }
+
+    .demo-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .demo-section li {
+        font-size: 16px;
+    }
+
+    .tip-item,
+    .example-item {
+        padding: 1rem;
+    }
+
+    .tip-item h3,
+    .example-item h3 {
+        font-size: 1.1rem;
+    }
+
+    .ejemplo {
+        padding: 12px;
+    }
+
+    .ejemplo h3 {
+        font-size: 1.2em;
+    }
+
+    #divPadre {
+        padding: 15px;
+    }
+
+    .galeria-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 8px;
+    }
+
+    .tarjeta {
+        padding: 8px;
+    }
+
+    .tarjeta img {
+        height: 100px;
+    }
+
+    .caption {
+        font-size: 0.8rem;
+    }
+
+    #log {
+        height: 120px;
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+
+    .lista {
+        margin-left: 1rem;
+    }
+
+    .lista li {
+        margin-bottom: 0.5rem;
+    }
+
+    code {
+        font-size: 0.85rem;
+        padding: 0.4rem;
+        overflow-x: auto;
+    }
+
+    footer {
+        padding: 1.5rem 1rem;
+    }
+
+    footer p {
+        font-size: 0.9rem;
+    }
+
+    #miFormulario button {
+        width: 100%;
+        height: 2.5rem;
+    }
+
+    .demo-area {
+        padding: 0.75rem;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    nav a {
+        font-size: 0.85rem;
+        padding: 0.5rem;
+    }
+
+    .content-card h2,
+    .section-card h2 {
+        font-size: 1.2rem;
+    }
+
+    .demo-section li {
+        font-size: 14px;
+    }
+
+    .galeria-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tips de Eventos - Eventos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="tips-de-eventos.html" class="active">Tips de Eventos</a></li>
+            <li><a href="invocacion-llamada.html">Invocación Llamada</a></li>
+            <li><a href="creacion-y-acceso.html">Creación y Acceso</a></li>
+            <li><a href="localstorage.html">LocalStorage</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <h1>Tipos de Eventos</h1>
+        
+        <div class="content-card demo-section">
+            <h2>Demonstracion algunos tipos de Eventos: </h2>
+
+            <h2>Eventos de Ratón:</h2>
+            <ul>
+                <li>click: Se produce al hacer clic en un elemento.</li>
+                <li>dblclick: Se produce al hacer doble clic (cierra la pagina).</li>
+                <li>mouseover: El cursor del ratón entra en un elemento.</li>
+                <li>mousedown: Se presiona un botón del ratón sobre un elemento.</li>
+            </ul>
+
+            <h2>Eventos del Teclado:</h2>
+            <ul>
+                <li>keydown: Se produce al presionar una tecla.</li>
+                <li>keyup: Se produce al soltar una tecla.</li>
+            </ul>
+
+            <h2>Eventos de Formulario</h2>
+            <ul>
+                <li>submit: Se dispara cuando se envía un formulario.</li>
+                <li>focus: Un elemento de formulario recibe el foco.</li>
+                <li>blur: Un elemento de formulario pierde el foco.</li>
+            </ul>
+
+            <h2>Eventos de ventana y carga:</h2>
+            <ul>
+                <li>load: Se dispara cuando la página completa.</li>
+                <li>resize: Se dispara cuando se redimensiona la ventana del navegador (Cambia el color del body).</li>
+                <li>scroll: Se dispara cuando se desplaza el contenido de la ventana o un elemento.</li>
+            </ul>
+
+            <button id="miBtn">Pulsa</button>
+            <button id="miBtn1">Hover</button>
+
+            <div id="divLista">
+                <ul id="divtest"></ul>
+            </div>
+
+            <form id="miFormulario">
+                <label>Nombre:</label>
+                <input type="text" id="nombre" placeholder="Escribe tu nombre">
+                <button type="submit">Enviar</button>
+            </form>
+            <p id="mensaje"></p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Eventos - Proyecto de Aprendizaje</p>
+        <p>Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        const boton = document.getElementById("miBtn");
+        const miBtn1 = document.getElementById("miBtn1");
+        const lista = document.getElementById("divtest");
+        const divLista = document.getElementById("divLista");
+        const form = document.getElementById('miFormulario');
+        const nombreInput = document.getElementById('nombre');
+        const mensaje = document.getElementById('mensaje');
+
+        //Evento de cargar pagina
+        window.addEventListener("load", function (event) {
+            const li = document.createElement("li");
+            li.textContent = "Evento carga de pagina";
+            lista.appendChild(li);
+        });
+
+        //Evento de mouse click
+        boton.addEventListener("click", function (event) {
+            const li = document.createElement("li");
+            li.textContent = "Mouse click";
+            li.style.fontSize = "3rem";
+            lista.appendChild(li);
+        });
+
+        //Evento mouse entra al elemento
+        miBtn1.addEventListener("mouseenter", function (event) {
+            const li = document.createElement("li");
+            li.textContent = "mouseenter";
+            li.style.fontSize = "2rem";
+            li.style.color = "red";
+            lista.appendChild(li);
+        });
+
+        //Evento hace Scroll
+        /*document.addEventListener("scroll", function (event) {
+            const li = document.createElement("li");
+            li.textContent = "scroll";
+            li.style.fontSize = "3rem";
+            lista.appendChild(li);
+        });*/
+
+        //Evento de teclada
+        /*window.addEventListener("keydown", function (event) {
+            const li = document.createElement("li");
+            li.textContent = "evento keydown";
+            li.style.fontSize = "3rem";
+            lista.appendChild(li);
+        });*/
+
+        //Evento de tecla soltada
+        /*window.addEventListener("keyup", function (event) {
+            const li = document.createElement("li");
+            li.textContent = "evento keyup";
+            li.style.fontSize = "3rem";
+            lista.appendChild(li);
+        });*/
+
+        //Ventana Cambia de tamano
+        window.addEventListener("resize", function (event) {
+            document.body.style.background = "green";
+        });
+
+        divLista.addEventListener("click", function (event) {
+            divLista.style.backgroundColor = "grey";
+        });
+
+        //Click derecho / menú contextual
+        window.addEventListener("contextmenu", function (event) {
+            const li = document.createElement("li");
+            li.textContent = "Se pulsó el botón derecho";
+            li.style.fontSize = "2rem";
+            lista.appendChild(li);
+        });
+
+        //doble click en el body - cierra la ventana
+        document.body.addEventListener("dblclick", function (event) {
+            console.log("Double click detected!");
+            // Intentar cerrar la ventana
+            window.close();
+        });
+
+        window.addEventListener("visibilitychange", function (event) {
+            const li = document.createElement("li");
+           if (document.hidden) {
+          li.textContent = "Pagina oculta";
+          li.style.fontSize = "2rem";
+          } else {
+          li.textContent = "Pagina visible";
+          li.style.fontSize = "2rem";
+          }
+
+          lista.appendChild(li);
+      });
+
+        // Evento input: detecta cuando se escribe
+        nombreInput.addEventListener('input', function (event) {
+            mensaje.textContent = nombreInput.value;
+        });
+
+        // Evento submit: evita el envío y valida
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Evita que se recargue la página
+            if (nombreInput.value === "") {
+                mensaje.textContent = "Por favor, ingresa tu nombre.";
+            } else {
+                mensaje.textContent = `Formulario enviado con éxito. ¡Bienvenido, ${nombreInput.value}!`;
+            }
+        });
+
+        //Evento focus: 
+        document.getElementById("nombre").addEventListener("focus", function () {
+            console.log("El input recibió el foco");
+        });
+
+        document.getElementById("nombre").addEventListener("blur", function () {
+            console.log("El input perdió el foco");
+        });
+    </script>
+
+</body>
+</html>

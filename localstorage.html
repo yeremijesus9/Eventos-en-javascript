@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage - Eventos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body onload="carga()">
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="tips-de-eventos.html">Tips de Eventos</a></li>
+            <li><a href="invocacion-llamada.html">Invocación Llamada</a></li>
+            <li><a href="creacion-y-acceso.html">Creación y Acceso</a></li>
+            <li><a href="localstorage.html" class="active">LocalStorage</a></li>
+        </ul>
+    </nav>
+
+
+
+
+    <!--  Main Content -->
+    <main>
+   
+    <div class="centrado">
+<h1>Almacenamiento web:</h2>
+
+
+<div class="content-card">
+
+<!-- Presentacion -->
+<h2>1. localStorage y sessionStorage</h2>
+ <p>Guarda valores en el almacen:</p>
+
+<ul class="lista">
+    <li ><p>Localstorage sobrevive al reinicio del navegador.</p></li>
+    <li><p>Localstorage se comparte entre pestañas.</p></li>
+    <li><p>SessionStorage se elimina al cerrar la pestaña.</p></li>
+    <li><p>SessionStorage no se comparte entre pestañas.</p></li>
+</ul>
+<br>
+
+
+<!-- Formulario -->
+<form id="formDatos">
+    <label for="nombre">Nombre:</label><br>
+    <input type="text" id="nombre" required><br><br>
+
+    <label for="edad">Edad:</label><br>
+    <input type="number" id="edad" required><br><br>
+
+    <input type="radio" id="local" name="almacen" value="local" checked>
+    <label for="local">local</label><br>
+    <input type="radio" id="sesion" name="almacen" value="sesion">
+    <label for="sesion">sesion</label><br>
+    <button type="button" class="demo-button" onclick="
+        if (document.getElementById('local').checked) {
+            guardarlocal();
+        } else {
+            guardarsesion();
+        }
+    ">Guardar</button>
+    <button type="button" class ="demo-button" onclick="borrarDatos()">Borrar almacen</button>
+     <a href="localstorage.html" class="demo-button" target="_blank">Abrir otra pestaña</a>
+
+</form>
+
+<!-- visualizacion -->
+    <p>Valores en el almacen:</p>
+    <ul class="lista">
+        <li color>
+            <p id="salidalocal"></p>
+        </li>
+        <li> <p id="salidasession"></p></li>
+    </ul>
+
+
+</div>
+
+<!-- conversion JSON-->
+<div class="content-card">
+
+    <h2>2. Conversion objetos JSON</h2>
+    <p>Toma los valores nombre y edad y los convierte en cadena JSON y Objeto.</p>
+
+    <button type="button" class ="demo-button" onclick="cadena()">Conversión JSON</button>
+
+    <p>Valores de la conversión:</p>
+    <ul class="lista">
+        <li><p id="cadenajson">Cadena JSON</p></li>
+        <li><p id="objetojson">Ojeto JSON</p></li>
+    </ul>
+  
+
+</div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Eventos - Proyecto de Aprendizaje</p>
+        <p>Todos los derechos reservados</p>
+    </footer>
+
+
+    <!-- Funciones javascript-->
+<script>
+      // muestra los valores del almacen al cargar
+function carga() {
+    
+    // obtiene los datos del almacen
+    const a  = sessionStorage.getItem('nombre');
+    const b  = sessionStorage.getItem('edad');
+ 
+    const c = localStorage.getItem('nombre');
+    const d  = localStorage.getItem('edad');
+  
+    // muestra los resultados
+    document.getElementById("salidalocal").innerHTML = "localStorage: " + c + " - " + d;
+    document.getElementById("salidasession").innerHTML = "sessionStorage: " + a + " - " + b;
+}
+
+
+// guarda los datos del formulario en sessionStorage y muestra los valores en <p>
+function guardarsesion() {
+
+    // obtiene el valor por su ID
+    const nombre = document.getElementById("nombre").value;
+    const edad = document.getElementById("edad").value;
+
+    // Guardar en sessionStorage
+    sessionStorage.setItem("nombre", nombre);
+    sessionStorage.setItem("edad", edad);
+
+    // muestra los resultados
+
+    const a  = sessionStorage.getItem('nombre');
+    const b  = sessionStorage.getItem('edad');
+    document.getElementById("salidasession").innerHTML = `session: ${sessionStorage.getItem('nombre')} ${sessionStorage.getItem('edad')}`;
+    }
+
+
+// guarda los datos del formulario en localstorage y muestra los valores en <p>
+function guardarlocal() {
+
+    // obtiene el valor por su ID
+    const nombre = document.getElementById("nombre").value;
+    const edad = document.getElementById("edad").value;
+
+    // Guardar en localstorage
+    localStorage.setItem("nombre", nombre);
+    localStorage.setItem("edad", edad);
+
+    // muestra los resultados
+
+    document.getElementById("salidalocal").innerHTML = `local: ${localStorage.getItem('nombre')} - ${localStorage.getItem('edad')}`;
+    }
+
+// borra los datos del almacen
+function borrarDatos() {
+
+    // borra sessionStorage y localStorage
+    sessionStorage.clear();
+    localStorage.clear();
+
+    // muestra los resultados
+
+    const a = sessionStorage.getItem('nombre');
+    const b = sessionStorage.getItem('edad');
+    const ca = localStorage.getItem('nombre');
+    const da = localStorage.getItem('edad');    
+    document.getElementById("salidalocal").innerHTML = "localStorage: " + ca + " - " + da;
+    document.getElementById("salidasession").innerHTML = "sessionStorage: " + a + " - " + b;
+
+}
+
+// muestra los datos en formato cadena JSON
+function cadena(){
+
+    // obtiene el valor por su ID y crea un objeto
+    const nombre = document.getElementById("nombre").value;
+    const edad = document.getElementById("edad").valueAsNumber;
+    const persona={
+        nombre: nombre, 
+        edad: edad};
+
+    // convierte el objeto a cadena JSON
+    const cadena=JSON.stringify(persona);
+
+    // devuelve la cadena JSON a objeto
+    const persona2=JSON.parse(cadena);
+
+    // muestra los resultados
+    document.getElementById("cadenajson").innerHTML = cadena;
+    document.getElementById("objetojson").innerHTML = persona2.nombre + " - " + persona2.edad;
+}
+
+</script>
+
+</body>
+</html>
+

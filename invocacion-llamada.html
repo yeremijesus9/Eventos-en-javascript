@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invocación Llamada - Eventos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="tips-de-eventos.html">Tips de Eventos</a></li>
+            <li><a href="invocacion-llamada.html" class="active">Invocación Llamada</a></li>
+            <li><a href="creacion-y-acceso.html">Creación y Acceso</a></li>
+            <li><a href="localstorage.html">LocalStorage</a></li>
+        </ul>
+    </nav>
+
+   
+    <main>
+        <h1> Métodos de Eventos en JavaScript</h1>
+        <div class="content-card">
+            <p>Abre la consola del navegador (F12) para ver los resultados de los ejemplos 6, 7, 8 y 9.</p>
+
+            <!-- 1. Etiqueta HTML (Método rápido) -->
+            <div class="ejemplo">
+                <h3>1. Etiqueta HTML (Método rápido)</h3>
+                <p>El evento se define directamente en el atributo HTML <code>onclick</code>. **No recomendado** para código complejo.</p>
+                <button onclick="alert('¡Hola Mundo! (Ejemplo 1)')">1. Clic Rápido</button>
+            </div>
+
+            <!-- 2. Desde Script (Método/Función Directa) -->
+            <div class="ejemplo">
+                <h3>2. Desde Script (Método/Función Directa)</h3>
+                <p>Se asigna una función a la propiedad <code>onclick</code> del elemento en JavaScript. **Solo permite un manejador**.</p>
+                <button id="miBoton2">2. Clic Directo</button>
+            </div>
+
+            <!-- 3. Desde Script (addEventListener()) -->
+            <div class="ejemplo">
+                <h3>3. Desde Script (addEventListener())</h3>
+                <p>El método **recomendado**. Permite múltiples manejadores de eventos y más control.</p>
+                <button id="miBoton3">3. Clic con addEventListener</button>
+            </div>
+
+            <!-- 4. Propagación -->
+            <div class="ejemplo">
+                <h3>4. Propagación (Burbujeo)</h3>
+                <p>Muestra cómo un evento en el hijo se propaga al padre. Revisa la consola.</p>
+                <div id="divPadre">
+                    Div Padre (Clic aquí)
+                    <button id="botonHijo">4. Botón Hijo</button>
+                </div>
+            </div>
+
+            <!-- 5. Con parámetros y función flecha -->
+            <div class="ejemplo">
+                <h3>5. Con parámetros y función flecha</h3>
+                <p>Uso de función flecha para llamar a una función con parámetros de forma concisa.</p>
+                <button id="miBoton5">5. Clic con Parámetros</button>
+            </div>
+
+            <!-- 6. Objeto event -->
+            <div class="ejemplo">
+                <h3>6. Objeto event</h3>
+                <p>Muestra el objeto completo del evento, con toda su información, en la consola.</p>
+                <button id="miBoton6">6. Ver Objeto Event</button>
+            </div>
+
+            <!-- 7. Datos de Elemento (id, nodeName, current) -->
+            <div class="ejemplo">
+                <h3>7. Datos de Elemento (id, nodeName, current)</h3>
+                <p>Muestra en consola datos clave del elemento: <code>target.id</code>, <code>target.nodeName</code> y <code>currentTarget</code>.</p>
+                <button id="miBoton7">7. Ver Datos de Elemento</button>
+            </div>
+
+            <!-- 8. Datos de Posición (screenx, screeny) -->
+            <div class="ejemplo">
+                <h3>8. Datos de Posición (screenx, screeny)</h3>
+                <p>Mueve el ratón sobre el área azul para ver las coordenadas de la pantalla en la consola.</p>
+                <div id="miDivPosicion">Mueve el ratón aquí</div>
+            </div>
+
+            <!-- 9. Datos de Teclado (código ASCII) -->
+            <div class="ejemplo">
+                <h3>9. Datos de Teclado (código ASCII)</h3>
+                <p>Escribe en el campo de texto para ver el <code>keyCode</code> (ASCII) y <code>key</code> en la consola.</p>
+                <input type="text" id="miInput9" placeholder="Escribe algo aquí">
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Eventos - Proyecto de Aprendizaje</p>
+        <p>Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        // 2. Desde Script (Método/Función Directa)
+        const boton2 = document.getElementById('miBoton2');
+        boton2.onclick = function() {
+            alert('¡Hola desde un script! (Ejemplo 2)');
+        };
+
+        // 3. Desde Script (addEventListener())
+        const boton3 = document.getElementById('miBoton3');
+        boton3.addEventListener('click', function() {
+            alert('¡Hola desde addEventListener! (Ejemplo 3)');
+        });
+
+        // 4. Propagación
+        const divPadre = document.getElementById('divPadre');
+        const botonHijo = document.getElementById('botonHijo');
+
+        divPadre.addEventListener('click', function() {
+            console.log('4. Evento en el div padre (Burbujeo)');
+        });
+
+        botonHijo.addEventListener('click', function(event) {
+            console.log('4. Evento en el botón hijo');
+            // event.stopPropagation(); // Descomentar para detener el burbujeo
+        });
+
+        // 5. Con parámetros y función flecha
+        const miBoton5 = document.getElementById('miBoton5');
+        const miFuncion = (mensaje) => {
+            alert(mensaje);
+        };
+        miBoton5.addEventListener('click', () => miFuncion('¡Hola con parámetros y función flecha! (Ejemplo 5)'));
+
+        // 6. Objeto event
+        const boton6 = document.getElementById('miBoton6');
+        boton6.addEventListener('click', function(event) {
+            console.log('--- 6. Objeto event ---');
+            console.log(event);
+        });
+
+        // 7. Datos de Elemento (id, nodeName, current)
+        const boton7 = document.getElementById('miBoton7');
+        boton7.addEventListener('click', function(event) {
+            console.log('--- 7. Datos de Elemento ---');
+            console.log('ID:', event.target.id);
+            console.log('Nodo:', event.target.nodeName);
+            console.log('Elemento actual (currentTarget):', event.currentTarget);
+        });
+
+        // 8. Datos de Posición (screenx, screeny)
+        const miDivPosicion = document.getElementById('miDivPosicion');
+        miDivPosicion.addEventListener('mousemove', function(event) {
+            console.log('--- 8. Datos de Posición ---');
+            console.log('Posición screenX:', event.screenX);
+            console.log('Posición screenY:', event.screenY);
+        });
+
+        // 9. Datos de Teclado (código ASCII)
+        const miInput9 = document.getElementById('miInput9');
+        miInput9.addEventListener('keydown', function(event) {
+            console.log('--- 9. Datos de Teclado ---');
+            console.log('Código de tecla (keyCode):', event.keyCode);
+            console.log('Tecla (key):', event.key); // Se recomienda usar event.key en código moderno
+        });
+    </script>
+</body>
+</html>
+
